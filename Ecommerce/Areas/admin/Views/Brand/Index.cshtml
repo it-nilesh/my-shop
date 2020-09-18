@@ -1,0 +1,34 @@
+﻿@model Ecommerce.Areas.admin.Models.Brand.Brand
+
+@{
+    ViewBag.Title = "Brand";
+}
+
+<h2>Brand</h2>
+<div class="minihight"></div>
+
+@Html.Action("SideMenu")
+
+<div id="mainColumn">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.b_name)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBoxFor(model => model.b_name, new { id = "searchBoxInput" })
+          
+        </div>
+       
+       <br />
+        <p>
+            @{string subname = Request.QueryString["Id"] != null ? "Update Brand" : "Add Brand"; }
+            <input type="submit" value="@subname" />
+            <input type="button" value="Cancel" onclick="window.location.href='List'"  class="btn" />
+        </p>
+}
+
+
+        </div>
+

@@ -1,0 +1,108 @@
+﻿@model Ecommerce.Areas.admin.Models.Product.Product
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    #pageSearchBox
+    {
+        width:700px;
+    }
+        #pageSearchBox #searchBoxInput
+        {
+            width:100%;
+        }
+</style>
+<h2>Product</h2>
+<div class="minihight"></div>
+@Html.Action("SideMenu")
+
+<div id="mainColumn">
+    <div style="text-align: left; width: 50%;">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.p_name)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBoxFor(model => model.p_name , new { id = "searchBoxInput" })
+            @Html.ValidationMessageFor(model => model.p_name)
+        </div>
+    <br />
+    <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.p_model)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBoxFor(model => model.p_model, new { id = "searchBoxInput" })
+            @Html.ValidationMessageFor(model => model.p_model)
+        </div>
+      <br />
+    <br />
+     
+        <div class="editor-label">
+            @Html.LabelFor(model => model.c_id)
+        </div>
+        <div class="editor-field" id="pageSearchBox" >
+            @Html.DropDownListFor(model => model.c_id, (SelectList)ViewBag.categoryList,new { id = "searchBoxInput",style="width:100%"  })
+            @Html.ValidationMessageFor(model => model.c_id)
+        </div>
+      <br />
+    <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.b_id)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.DropDownListFor(model => model.b_id,(SelectList)ViewBag.brandList, new { id = "searchBoxInput",style="width:100%" })
+            @Html.ValidationMessageFor(model => model.b_id)
+        </div>
+      <br />
+    <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.p_price)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBoxFor(model => model.p_price, new { id = "searchBoxInput" })
+            @Html.ValidationMessageFor(model => model.p_price)
+        </div>
+      <br />
+    <br />
+       <div class="editor-label">
+            @Html.LabelFor(model => model.p_short_description)
+        </div>
+        <div class="editor-field" id="pageSearchBox" style="height:auto">
+            @Html.TextAreaFor(model => model.p_short_description, new { id = "searchBoxInput", style="height:100px;" })
+            @Html.ValidationMessageFor(model => model.p_short_description)
+        </div>
+      <br />
+    <br />
+   <div class="editor-label">
+            @Html.LabelFor(model => model.p_Log_desc)
+        </div>
+        <div class="editor-field" id="pageSearchBox" style="height:auto">
+            @Html.TextAreaFor(model => model.p_Log_desc, new { id = "searchBoxInput1", style="height:100px;" })
+            @Html.ValidationMessageFor(model => model.p_Log_desc)
+        </div>
+
+       <br />
+       
+
+        <p>
+            
+            <input type="submit" value="Save" />   &nbsp;&nbsp;&nbsp; 
+            <input type="button" value="Cancel" onclick='window.location.href="List"' class="btn" />
+        </p>
+}
+
+     </div>
+</div>
+
+<script src="~/content/js/jquery-1.8.3.min.js"></script>
+<script src="~/content/js/ckeditor/ckeditor.js"></script>
+ <script type="text/javascript">
+     $(function () {
+                CKEDITOR.replace('searchBoxInput1');
+            });
+        </script>

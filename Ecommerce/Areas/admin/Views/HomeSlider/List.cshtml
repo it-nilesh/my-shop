@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Ecommerce.Areas.admin.Models.Image.slider.Slider>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Home Slider</h2>
+<div class="minihight"></div>
+@Html.Action("SideMenu")
+<div id="mainColumn">
+    @{int i = 1;}
+    <table class="sexy-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Image
+                </th>
+                <th>Description
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach (Ecommerce.Areas.admin.Models.Image.slider.Slider slider in @Model)
+                {
+                <tr>
+                    <td>
+                        @i
+                       
+                    </td>
+                    <td>
+                        <img src="~/Data/Slider/@slider.Image_URl" height="60px" width="60px" alt="" title="" />
+
+                    </td>
+                    <td>
+                        @slider.Decription
+                    </td>
+                    <td>
+                        <a href="~/admin/HomeSlider/Delete?id=@slider.Id">DELETE</a>
+                    </td>
+                </tr>
+                    i = i + 1;
+                }
+            }
+        </tbody>
+
+
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

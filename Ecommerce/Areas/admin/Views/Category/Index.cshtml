@@ -1,0 +1,49 @@
+﻿@model Ecommerce.Areas.admin.Models.Category.category
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category</h2>
+<div class="minihight"></div>
+@Html.Action("SideMenu")
+
+<div id="mainColumn">
+    <div style="text-align: left; width: 50%;">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.c_name)
+            </div>
+            <div class="editor-field" id="pageSearchBox">
+                @Html.DropDownList("CategoryList",
+                (System.Collections.Generic.IEnumerable<SelectListItem>)ViewBag.CategoryList,new { id = "searchBoxInput", style = "width:100%" })
+                @Html.ValidationMessageFor(model => model.c_name)
+            </div>
+            <br />
+            <div class="editor-label">
+                @Html.Label("Add Child")
+
+                @Html.CheckBox("addChildCategory")
+
+            </div>
+            <br />
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.c_name)
+            </div>
+            <div class="editor-field" id="pageSearchBox">
+                @Html.TextBoxFor(model => model.c_name, new { id = "searchBoxInput" })
+                @Html.ValidationMessageFor(model => model.c_name)
+            </div>
+       
+            <br />
+            <p>
+                <input type="submit" value="Add Category" />
+            </p>
+        }
+    </div>
+</div>

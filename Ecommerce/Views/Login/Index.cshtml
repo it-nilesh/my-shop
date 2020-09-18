@@ -1,0 +1,54 @@
+﻿@model Ecommerce.Models.Bean.Login.LoginBean
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Login</legend>
+        <center>
+
+            <table style="width:600px">
+                <tr>
+                    <td style="width:20%">
+                          @Html.LabelFor(model => model.email)
+                    </td>
+                    <td style="width:50%">
+                         @Html.EditorFor(model => model.email)
+                    </td>
+                    <td style="width:30%">
+                             @Html.ValidationMessageFor(model => model.email)
+
+                    </td>
+                </tr>
+
+                  <tr>
+                    <td>
+                            @Html.LabelFor(model => model.password)
+                    </td>
+                    <td>
+                        @Html.PasswordFor(model => model.password)
+                    </td>
+                    <td>
+                       @Html.ValidationMessageFor(model => model.password)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td colspan="2">
+                        <input type="submit" value="Login" />
+                    </td>
+                </tr>
+            </table>
+ </center>
+    </fieldset>
+}
+<br />
+<br />
+<br />

@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/content/css/ad/AdminStyleSheet.css" rel="stylesheet" />
+    <link href="~/content/css/ad/css.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body class="s-noclickonce">
+    <div id="outer-wrapper">
+        <div id="outer-wrapper">
+            <div id="content-wrapper">
+
+                <!-- Header -->
+                <header class="main">
+                    <div id="logo"><a href="/">MyShop</a></div>
+                    <div id="header-sidebox">
+                        @* <div id="searchBox" role="search">
+                           <form action="#" method="get" novalidate="novalidate">
+                                <input name="q" id="searchBoxInput" class="expanding-search" placeholder="Search Packages" value="" autocomplete="off">
+                                <input id="searchBoxSubmit" type="submit" value="Submit">
+                            </form>
+                        </div>*@
+                        <div class="user-display">
+                            <span class="welcome">
+                                <a href="~/admin/Home/Logout" title="#">Logout</a>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                <!--End Header -->
+                <!--Menu !-->
+                <nav class="main">
+                    <ul id="menu" class="expanding-search">
+
+                        <li class="current"><a href="~/admin/Home">Home</a></li>
+                        <li><a href="~/admin/Brand/List" @*class="upload"*@>Brand</a></li>
+                        <li ><a href="~/admin/Category/List">Category</a></li>  
+                        <li style="display:none"><a href="~/admin/Attribute/" @*class="upload"*@>Product Attribute</a></li>
+                         <li ><a href="~/admin/Product/">Product</a></li>
+                       @* <li><a href="~/admin/Image/">Upload Product Image</a></li>*@
+                           <li><a href="~/admin/HomeSlider/List">Slider</a></li>
+                        <li><a href="~/admin/Order">Order</a></li>
+                        <li><a href="~/admin/User/">User</a></li>
+                    </ul>
+                </nav>
+                <!-- End Menu-->
+
+                <div style="min-height:500px">
+
+
+                @RenderBody()
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+        <div id="layout-footer" class="group">
+            <footer id="footer">
+               
+                <div class="license">
+                    <a title="Outercurve Foundation" href="#">
+                        <img src="~/content/css/images/logo.png" alt="Myshop"></a>
+                    <p>
+                        © 2015 MyShop Foundation -
+        <a href="#">Terms of Use</a> -
+        <a href="#">Privacy Policy</a> -
+        <a href="#">About the Gallery</a>
+                    </p>
+                    <p>
+                        Deployed using <a href="#" target="referral">Nilesh Vishwakarma</a> | Uses <a href="#" target="referral">Font Awesome</a> by nil
+                    </p>
+                    <p id="releaseTag">
+                    </p>
+
+                </div>
+            </footer>
+        </div>
+
+
+    </div>
+</body>
+</html>

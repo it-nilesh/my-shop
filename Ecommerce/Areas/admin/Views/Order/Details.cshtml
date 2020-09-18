@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+
+<table>
+    <tr>
+        <td style="text-align: left">
+            <p>
+                Name : @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).custname)<br />
+                Address : @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).custaddr)<br />
+                PinCode : @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).custpincode)<br />
+                @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).custphone)<br />
+                @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).custemail)<br />
+            </p>
+        </td>
+        <td style="text-align: right">
+            <p>
+                Invoice No :#@(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).orderId)<br />
+                Order Date :  @(((Ecommerce.Areas.admin.Models.Bill.CustomerBillDetails)ViewBag.CustDetails).orderdate)<br />
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+@foreach (Ecommerce.Areas.admin.Models.Bill.billproduct bp in ViewBag.ProductList)
+{
+
+}

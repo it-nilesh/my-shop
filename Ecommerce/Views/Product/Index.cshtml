@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ecommerce.Models.Core.productWrapperBrand>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<script type="text/javascript">
+
+    function red(num)
+    {
+        window.location.href="/Product/Details?id="+num;
+    }
+
+</script>
+<style>
+    .bottom-strip div
+    {
+        visibility:hidden;
+    }
+</style>
+
+<div id="content">
+    <div class='top'></div>
+
+    <div class='main'>
+        <div class='imges'>
+            <ul class='ProductList'>
+                @{
+                    foreach (Ecommerce.Models.Core.productWrapperBrand pro in Model)
+                    {
+                    <li><a id='ContentPlaceHolder1_ListView1_HyperLink1_0' href='#'  onclick="red(@pro.Id)">
+                        <img src='/Data/Image/@pro.ImageURL' style='height: 165px; width: 150px;'></a>
+                        <br>
+                        <font color='red'><b>MODEL: </b></font>
+                        <span>@pro.p_model</span>
+                        <br>
+                        <font color='red' class='price'><b>Price in Rs.: </b></font>
+                        <span>@pro.p_price</span>
+                        <br />
+                        <input type='button' onclick="red(@pro.Id)"
+                            value='Buy' class='submit' style="height: 25px; width: 100%;" /><br>
+                        <input type='button'onclick='_addCart(@pro.Id)'
+                            value='ADD TO CART' class='submit' style="height: 25px; width: 100%;" />
+                    </li>;
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class='cl'></div>
+
+</div>

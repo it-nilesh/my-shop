@@ -1,0 +1,31 @@
+﻿@model Ecommerce.Areas.admin.Models.Attribute.Attribute
+
+@{
+    ViewBag.Title = "Attribute";
+}
+
+<h2>Attribute</h2>
+
+
+
+<br />
+<br />
+<center>
+    <div style="text-align:left;width:50%;">
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.a_name)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBoxFor(model => model.a_name, new { id = "searchBoxInput" })
+            @Html.ValidationMessageFor(model => model.a_name)
+        </div>
+       <br />
+        <p>
+            <input type="submit" value="Add Product Attribute" />
+        </p>
+}
+        </div>
+</center>

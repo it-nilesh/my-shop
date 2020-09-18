@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Ecommerce.Areas.admin.Models.User.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Details</h2>
+
+
+<div id="mainColumn">
+     @{int i = 1;}
+    <table class="sexy-table">
+         <thead>
+        <tr>
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.fullname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phoneno)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.pincode)
+            </th>
+            
+        </tr>
+ </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                  <td>@i
+                        @{i++;}</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phoneno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pincode)
+                </td>
+            </tr>
+        }
+            </tbody>
+         <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

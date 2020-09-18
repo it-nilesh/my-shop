@@ -1,0 +1,42 @@
+﻿@model Ecommerce.Areas.admin.Models.Image.slider.Slider
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Add New Home Slider</h2>
+<div class="minihight"></div>
+@Html.Action("SideMenu")
+
+<div id="mainColumn">
+
+    @using (Html.BeginForm("Index", "HomeSlider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <table>
+            <tr>
+                <td>Upload Image*</td>
+                <td>
+                    @Html.Hidden(Convert.ToString(Model.Id))
+                    @Html.TextBox("Image_URl", null, new { type = "file", id = "searchBoxInput", style = "width:100%" })
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>Decription
+                </td>
+                <td>
+                    @Html.TextArea("Decription", null,10,50, new { style = "width:100%" })
+                </td>
+            </tr>
+            <tr>
+           
+            <td></td>
+            <td>
+                <p>
+                    <input type="submit" value="Upload Image" />
+                </p>
+            </td>
+            </tr>
+        </table>
+    }
+</div>

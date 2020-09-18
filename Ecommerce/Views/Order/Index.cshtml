@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Ecommerce.Areas.admin.Models.Order.OrderView>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table thead tr td
+    {
+        font-size: medium;
+        color: black;
+        font-weight: bold;
+    }
+</style>
+<h2>You Order Details</h2>
+
+<br />
+<br />
+<table style="width: 100%">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.productname)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.qty)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.date)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.price)
+            </td>
+
+            <td>
+                @Html.DisplayNameFor(model => model.order_status)
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.productname, "Details", "Product", new { id = item.p_id }, null);
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.qty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Ecommerce.Areas.admin.Models.Brand.Brand>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Brand Details</h2>
+<div class="minihight"></div>
+
+@Html.Action("SideMenu")
+
+
+<div id="mainColumn">
+    @{int i = 1;}
+    <table class="sexy-table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Brand Name
+                </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        @foreach (Ecommerce.Areas.admin.Models.Brand.Brand brand in Model)
+        {
+    
+            <tbody>
+                <tr>
+                    <td>@i
+                        @{i++;}</td>
+                    <td>@brand.b_name</td>
+                    <td>
+                        <a href="~/admin/Brand/Index?id=@brand.Id">EDIT</a>
+                        <a href="~/admin/Brand/Delete?id=@brand.Id">DELETE</a>
+                    </td>
+                </tr>
+            </tbody>
+        
+        }
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "PaymentMethod";
+}
+<style type="text/css">
+    .TableCss thead
+    {
+        border-style: none;
+        background-color: Maroon;
+        width: 100%;
+        text-align: center;
+    }
+
+    .TableCss1
+    {
+        border-style: dotted;
+        background-color: White;
+    }
+
+    .TabHeader
+    {
+        color: snow;
+        font-size: large;
+        font-family: Verdana;
+        height: 45px;
+        text-align: center;
+    }
+
+    .data
+    {
+        color: Black;
+        font-family: MS Gothic Sans-Serif;
+        font-size: medium;
+        font-weight: bold;
+        height: 28px;
+    }
+</style>
+<fieldset>
+    <legend>Shipping Details</legend>
+    <center>
+         <table style="font-size:medium;" cellpadding="5" cellspacing="10" >
+            <tr>
+                <td>Name 
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).fullname)
+                </td>
+            </tr>
+            <tr>
+                <td>Address
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).address)
+                </td>
+            </tr>
+            <tr>
+                <td>Country
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).countryId)
+                </td>
+            </tr>
+            <tr>
+                <td>State
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).statesId)
+                </td>
+            </tr>
+            <tr>
+                <td>Pin Code
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).pincode)
+                </td>
+            </tr>
+            <tr>
+                <td>Email
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).email)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Phone
+                </td>
+                <td>: @(((Ecommerce.Models.Register.RegisterPro)(ViewBag.shippingDetails)).phoneno)
+                </td>
+            </tr>
+        </table>                   
+ </center>
+</fieldset>
+
+<br />
+
+<fieldset>
+    <legend>Selected Product</legend>
+
+
+    <table class="TableCss" style="width: 100%">
+        <thead>
+            <tr class="TabHeader">
+                <td style="width: 25%"></td>
+                <td>Your Item
+                </td>
+                <td>Quantity
+                </td>
+                <td>Price
+                </td>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @{double amount = 0;}
+            <tbody class="TableCss1">
+                @foreach (Ecommerce.Models.Bean.AddToCartBean bean in ViewBag.cartAddItem)
+                {
+                    <tr class="data">
+                        <td align="left">
+                            <img src="~/Data/Image/@bean.ProductImage"  width="70px" height="70px"/>
+                        </td>
+                        <td align="left">
+                            @bean.ProductName
+                        </td>
+                        <td align="right">
+                            @bean.ProductQty
+                        </td>
+                        <td align="right">
+                            @bean.ProductPrice
+                            @{amount = bean.ProductPrice + amount;}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th colspan="3" style="text-align: right">
+                    <h2>
+                        <br />
+                        <br />
+                        Total Amount</h2>
+                </th>
+                <th>
+                    <h2>
+                        <br />
+                        <br />
+                        Rs : @amount</h2>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <br />
+                    <br />
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+</fieldset>
+
+<br />
+<fieldset>
+    <legend>Select Payment Method</legend>
+    <input type="radio" value="1" checked="checked" />COD(Cash On Demand)
+</fieldset>
+
+<br />
+<fieldset>
+    <legend>Order</legend>
+    @using (Html.BeginForm())
+    {
+        <center>  <input type="submit" value="Order Now" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Cancel" /></center>
+    }
+</fieldset>
+<br />
+<br />
+<br />

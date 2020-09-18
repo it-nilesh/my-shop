@@ -1,0 +1,39 @@
+﻿<style type="text/css">
+
+.main{
+float:left;
+padding:0px;
+margin:0px;
+width:100%;
+}
+
+.imges{
+float:left;
+padding:10px;
+margin: 5px 0 10px;
+width:100%;
+ height: 270px;
+display:inline;
+border :10px;
+color:Black;
+
+}
+
+.product { display:table-row ; float: left; margin: 5px 0 10px; padding: 30px 15px 0 0; 
+           width: 223px; height: 270px; background: url(images/product.png) no-repeat 0 0; }
+
+.numbers{
+float:left;
+margin:0px;
+padding:0px;
+margin-left:60px;
+}
+.ProductList Li
+{
+display :inline;
+float:left;
+margin-left:25px;
+margin-bottom:25px;
+}
+
+</style>

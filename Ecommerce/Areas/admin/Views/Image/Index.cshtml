@@ -1,0 +1,106 @@
+﻿@model Ecommerce.Areas.admin.Models.Image.UploadImage
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Upload Image</h2>
+<div class="minihight"></div>
+<div id="sideColumn">
+    <nav>
+        <ul>
+            <li>
+                <a href="~/admin/Product/Index">Add New Product</a>
+            </li>
+            <li>
+                <a href="~/admin/Product/List">Product List</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div id="mainColumn">
+
+<div style="text-align:left;width:100%;">
+@using (Html.BeginForm("Index", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <br />@*
+     <div class="editor-label">
+            @Html.LabelFor(model => model.p_id)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.DropDownListFor(model => model.p_id, (IEnumerable<SelectListItem>)ViewBag.Products, new { id = "searchBoxInput", style = "width:100%" })
+            @Html.ValidationMessageFor(model => model.p_id)
+        </div>*@
+    
+    <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.imageURL)
+        </div>
+        <div class="editor-field" id="pageSearchBox">
+            @Html.TextBox("searchBoxInput", null, new { type = "file", id = "searchBoxInput", style = "width:100%" })
+            @Html.ValidationMessageFor(model => model.imageURL)
+        </div>
+
+       <br />
+
+        <p>
+            <input type="submit" value="Upload Image" />
+        </p>
+   
+    <br />
+    <br />
+    int i = 1;
+    <table class="sexy-table">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Images
+                </th>
+                <th>
+                </th>
+                <th>
+                  Action
+                </th>
+           </tr>
+       </thead>
+       <tbody>
+
+            @foreach (Ecommerce.Areas.admin.Models.Image.UploadImage upm in ViewBag.Images)
+            {
+                <tr>
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        <img src="~/Data/Image/@upm.imageURL" width="80px" height="80px" />
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new {id= ViewBag.id,Iid = upm.Id })
+                    </td>
+                </tr>
+               { i = i + 1;}
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+}
+    </div>
+</div>
+

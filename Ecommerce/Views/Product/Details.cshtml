@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+@model  Ecommerce.Areas.admin.Models.Product.Product
+
+<script>
+    $(document).ready(function () {
+
+        var img = $("#thumImg").find("img");
+
+        $("#defimg").attr("src", img[0].src);
+    })
+    function changethum(atm) {
+        $("#defimg").attr("src", $(atm).attr("src"));
+    }
+</script>
+<style>
+    #thumImg img
+    {
+        cursor: pointer;
+    }
+</style>
+
+<div id="content">
+    <div class='cl'></div>
+    <div class='main'>
+        <table style="width: 100%; border: solid 0px gray;">
+            <tr>
+                <td style="width: 35%;">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td>
+                                <img id="defimg" src="" width="85%" height="250px" style="margin: 5px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="thumImg">
+                                @foreach (Ecommerce.Areas.admin.Models.Image.UploadImage uim in ViewBag.imageList)
+                                {
+                                    <img src="~/Data/Image/@uim.imageURL" width="60px" height="60px" onclick="changethum(this)" style="margin: 5px;" />
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="width: 65%; vertical-align: top;">
+                    <br />
+                    <h1>@Model.p_name
+                    </h1>
+                    <br />
+                    <h4>Model No : @Model.p_model</h4>
+                    <br />
+                    <h3>Price : @Model.p_price</h3>
+                    <br />
+                    <p>
+                        @Model.p_short_description
+                    </p>
+                    <br />
+
+
+                    @using (Html.BeginForm())
+                    {
+                        <input type="submit" value='Buy Now' class='submit' style="height: 25px; width: 200px;" />
+                    }
+                    @*<input type='button' value='ADD TO Wishlist' class='submit' style="height: 25px; width: 200px;" />*@
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="border-top: solid 1px gray;">
+                    <br />
+                    <h2>Product Description</h2>
+                    <br />
+                    <p>
+                        @Html.Raw(@Model.p_Log_desc)
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class='cl'></div>
+</div>
+
+<br />
+<br />
+<br />

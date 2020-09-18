@@ -1,0 +1,175 @@
+﻿@model Ecommerce.Models.Register.RegisterPro
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#StateID").prop("disabled", true);
+        $("#CountryId").change(function () {
+            if ($("#CountryId").val() != "Please Select") {
+                var options = {};
+                options.url = "/SignUp/getstate";
+                options.type = "POST";
+                options.data = JSON.stringify({ country: $("#CountryId").val() });
+                options.dataType = "json";
+                options.contentType = "application/json";
+                options.success = function (states) {
+                    $("#Row-State").show();
+                    $("#StateID").empty();
+                    for (var i = 0; i < states.length; i++) {
+                        $("#StateID").append("<option value=" + states[i]["Id"] + ">" + states[i]["StateName"] + "</option>");
+                    }
+                    $("#StateID").prop("disabled", false);
+                }
+
+                options.error = function () { alert("Error retrieving sttes!"); };
+                $.ajax(options);
+            }
+            $("#StateID").empty();
+            $("#StateID").prop("disabled", true);
+        })
+    });
+</script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RegisterPro</legend>
+        
+        <center>
+        <table style="width:600px;">
+                <tr>
+                    <td colspan="3">
+                        <h1>
+                            Basic Information</h1>
+                           <br />
+        <br />
+                    </td>
+                  
+                        <td>
+                            &nbsp;
+                        </td>
+                    <td></td>
+                </tr>
+            <tr>
+                <td style="width:15%">
+                    @Html.LabelFor(model => model.fullname)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.fullname)
+                </td>
+                <td style="width:30%">
+                    @Html.ValidationMessageFor(model => model.fullname)
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.address)
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.address)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.address)
+
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    @Html.LabelFor(model => model.phoneno)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.phoneno)
+                   
+                </td>
+                <td> @Html.ValidationMessageFor(model => model.phoneno)</td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.countryId)
+                </td>
+                <td>
+                    @Html.DropDownList("CountryId", (SelectList)ViewBag.CountryList)
+                </td>
+<td>
+                    @Html.ValidationMessageFor(model => model.countryId)
+
+</td>
+            </tr>
+            <tr id="Row-State" style="display:none">
+                <td>
+                    @Html.LabelFor(model => model.statesId)
+                </td>
+                <td>
+                    @*@Html.DropDownList("StateList")*@
+
+                    <select id="StateID" name="StateID"></select>
+                   
+                    @Html.ValidationMessageFor(model => model.statesId)
+                </td>
+                <td>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.pincode)
+                </td>
+                <td>
+                   @* @Html.DropDownList("CityList")*@
+                    @Html.EditorFor(model => model.pincode)
+                  
+                </td>
+                <td>
+                      @Html.ValidationMessageFor(model => model.pincode)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.email)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.email)
+                   
+                </td>
+                <td> @Html.ValidationMessageFor(model => model.email)</td>
+            </tr>
+           
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.password)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(model => model.password)
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Create" />
+                </td>
+
+            </tr>
+        </table>
+     </center>
+    </fieldset>
+}
+
+<br />
+<br />
+<br />

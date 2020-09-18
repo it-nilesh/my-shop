@@ -1,0 +1,391 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/content/css/mouse.ico" />
+    <link href="~/content/css/style.css" rel="stylesheet" />
+    <!--[if IE 6]>
+	<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />	
+	<![endif]-->
+    <link href="~/content/css/StyleSheet2.css" rel="stylesheet" />
+    <link href="~/content/css/StyleSheet4.css" rel="stylesheet" />
+    <link href="~/content/css/jquery.jscrollpane.css" rel="stylesheet" />
+    <script src="~/content/js/jquery-1.8.3.min.js"></script>
+
+    <script src="~/content/js/functions.js"></script>
+    <script src="~/content/js/jquery.jcarousel.js"></script>
+    <script src="~/content/js/jquery.jscrollpane.min.js"></script>
+
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+
+        .style2
+        {
+            height: 6px;
+        }
+
+        .style3
+        {
+            font-size: x-large;
+            background-color: #66FFFF;
+        }
+
+        .style4
+        {
+            height: 8px;
+            text-align: left;
+        }
+
+        .style5
+        {
+            height: 23px;
+        }
+
+        .style6
+        {
+            width: 148px;
+            text-align: left;
+        }
+
+        .style7
+        {
+            height: 23px;
+            width: 148px;
+            text-align: left;
+        }
+
+        .style8
+        {
+            height: 8px;
+            width: 148px;
+            text-align: left;
+        }
+
+        .style10
+        {
+            width: 148px;
+            height: 23px;
+        }
+
+        .style11
+        {
+            width: 148px;
+            text-align: left;
+            height: 30px;
+        }
+
+        .style12
+        {
+            height: 30px;
+            text-align: left;
+        }
+
+        .style13
+        {
+            text-decoration: underline;
+            color: #FF33CC;
+            background-color: #CCFFFF;
+        }
+
+        .style14
+        {
+            text-align: left;
+        }
+
+        .style15
+        {
+            height: 23px;
+            text-align: left;
+        }
+
+        .style16
+        {
+            height: 6px;
+            text-align: left;
+        }
+
+        .shopping-cart span
+        {
+            padding-left: 0px;
+        }
+    </style>
+    <script src="~/content/js/JsCart.js"></script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="wrapper-bottom">
+            <div class="shell">
+                <!-- Header -->
+                <div id="header">
+                    <!-- Logo -->
+                    <!-- Header -->
+                    <div id="header">
+                        <!-- Logo -->
+                        <h1 id="logo">
+                            <a title="Home" href="#">Mobile and Laptop store</a></h1>
+
+                        <p class="shopping-cart">
+                            <a href="~/Profile" title="Profile"><span style="color: white; font-weight: bold">@{if (((Ecommerce.Models.Register.RegisterPro)Session["userId"]) != null)
+                                                                                                                { 
+                                @(((Ecommerce.Models.Register.RegisterPro)Session["userId"]).fullname);
+                                                                                                                }}</span></a>
+                            <a class="cart" href="~/Purchase/CartItem" title="Shopping Cart Item">
+                                <font color="aqua" size="3px">(<span id="cartItem"></span>)</font>
+                            </a>
+                        </p>
+                        <!-- Search -->
+                        <div class="search-expand">
+                        </div>
+                        <div id="search">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="retract-button">
+                                    <p>
+                                        retract
+                                    </p>
+                                </div>
+                           
+                                @Html.TextBox("txt_Search", null, new { @class = "field" });
+                                <input type="submit" id="btn_Search" class="submit-button" value="" />
+                            }
+                        </div>
+
+                        <!-- END Search -->
+                        <div class="cl">
+                        </div>
+
+                        <!-- Navigation -->
+                        <div id="navigation">
+                            <ul>
+                                <li><a title="Home" href="~/Home/">Home</a></li>
+                                @*<li><a title="About Us" href="~/AboutUs/Index">About Us</a></li>*@
+                                <li><a title="Contact Us" href="~/Home/ContactUs">Contact Us</a></li>
+                                @if (((Ecommerce.Models.Register.RegisterPro)Session["userId"]) == null)
+                                {
+                                    <li>
+                                        <a title="Login" href="~/Login/">LogIn</a>
+                                    </li>
+                                    <li>
+                                        <a title="Signup" href="~/SignUp/">SignUp</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a title="Logout" href="~/Login/Logout">LogOut</a>
+                                    </li>
+                                    <li>
+                                        <a title="Order" href="~/Order/">Order</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="cl">
+                        </div>
+                        <!-- END Navigation -->
+
+                        <!-- Dropdown Navigation -->
+                        <div id="sort-nav">
+                            <span class="label-left"></span>
+                            <div class="label-bg">
+                                @Html.Raw(Ecommerce.Models.Core.GenerateMenu.getMenu())
+                            </div>
+                            <span class="label-right"></span>
+                        </div>
+                        <!-- END Dropdown Navigation -->
+                        <div class="cl">
+                        </div>
+                    </div>
+                    <!-- END Header -->
+                </div>
+                <div id="main">
+                    <!-- Slider -->
+                    <div class="slider-holder">
+                        <div class="promo">
+                            <img src="~/content/css/images/promo.jpg" alt="Big Sale This Week -30% OFF!" />
+                        </div>
+                        <div id="slider">
+
+                            <ul>
+
+                                @{
+                                    int slidecount = 0;
+                                    foreach (Ecommerce.Areas.admin.Models.Image.slider.Slider slide in Ecommerce.Models.Core.Slider.GetSlider())
+                                    {
+                                    <li>
+                                        <img src="~/Data/Slider/@slide.Image_URl" height="350px" width="100%" alt="" title="" />
+                                        <div class="caption">
+                                            @* <h2>New Dell Laptop</h2>*@
+                                            <div class="text">
+                                                <p>
+                                                    @slide.Decription
+                                                </p>
+                                            </div>
+                                            @* <div class="buy-now">
+                                                <p>
+                                                    BUY NOW
+                                                </p>
+                                                <p class="price">
+                                                    Rs. 57000
+                                                </p>
+                                            </div>
+                                            <div class="cl">
+                                            </div>
+                                            <p>
+                                                <strike>60000</strike>
+                                            </p>*@
+
+                                        </div>
+                                    </li>
+                                        slidecount++;
+                                    }
+                                }
+
+
+                            </ul>
+
+                        </div>
+                        <div class="cl">
+                        </div>
+                        <div class="jcarousel-control">
+                            @{
+                                for (int j = 1; j <= slidecount; j++)
+                                {
+                                <a title="Slide @j" href="#">@j</a> 
+                                }
+                            }
+                        </div>
+                    </div>
+                    <!-- END Slider -->
+                    <div id="Div1">
+                    </div>
+                    <div>
+
+                        @RenderBody()
+
+
+
+
+
+                        <!-- Bottom Strip -->
+                        <div class="bottom-strip">
+                            <div class="box-holder left">
+                                <div class="box">
+                                    <div class="top">
+                                    </div>
+                                    <div class="label">
+                                        <h3>About Us</h3>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="text-widget">
+                                            <p>
+                                                <b><strong>Help / FAQ </strong>Order inquiry
+                            <br>
+                                                    customerservice@xyz.com<br>
+                                                    +91-0000000000</b>
+                                            </p>
+                                        </div>
+                                        <a class="read-more" title="Read More" href="#">Read More</a>
+                                    </div>
+                                    <div class="bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-holder middle">
+                                <div class="box">
+                                    <div class="top">
+                                    </div>
+                                    <div class="label">
+                                        <h3>Contact Us</h3>
+                                    </div>
+                                    <div class="middle" id="newsletter">
+                                        <div class="post">
+                                            <p>
+                                                <apan>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </apan>
+                                                <span>Nilesh Vishwakarma</span>
+                                                <br />
+                                                <apan>Phone No : </apan>
+                                                <span>+91 0000 000 000</span>
+                                                <br />
+                                                <apan>Address : </apan>
+                                                <span>Navsari<br />
+                                                    Gujarat, India - 396325</span>
+                                            </p>
+                                            <p>
+                                            </p>
+                                        </div>
+
+                                        <div class="cl">
+                                            &nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-holder right">
+                                <div class="box">
+                                    <div class="top">
+                                    </div>
+                                    <div class="label">
+                                        <h3>Special Offer</h3>
+                                    </div>
+                                    <div class="middle post-short">
+                                        <div class="post">
+
+
+                                            <a href="/" title="special offer">
+                                                <img src="~/content/images/special-offer.jpg" width="250px" />
+                                            </a>
+
+
+                                        </div>
+
+                                        <div class="cl">
+                                        </div>
+                                    </div>
+                                    <div class="bottom">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cl">
+                            </div>
+                        </div>
+                        <!-- END Bottom Strip -->
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="footer-push">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+        <div class="shell">
+            <a class="footer-logo" href="#" title="Home"></a>
+            <p id="bottom-nav">
+                <a title="Home" href="#">Home</a><a title="Sales" href="#">Sell Product</a><a title="Blog"
+                    href="#">Blog</a><a title="Conatct Us" href="#">Contact Us</a>
+            </p>
+
+
+            <div class="cl">
+            </div>
+            <span style="color: black; float: left">&copy;<span class="small" style="color: black"> Copyright 2015 nil</span></span>
+            <span style="color: black; float: right">Designer By Nilesh Vishwakarma</span>
+        </div>
+    </div>
+    <!-- END Footer -->
+
+</body>
+</html>

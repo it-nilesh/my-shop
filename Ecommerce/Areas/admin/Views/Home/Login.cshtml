@@ -1,0 +1,54 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <link href="~/content/css/style - Copy.css" rel="stylesheet" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</head>
+<body>
+
+    <!-----start-main---->
+    <div class="login-form">
+        <div class="head">
+            <img src="~/content/images/mem2.jpg" alt="" />
+
+        </div>
+        @using (Html.BeginForm())
+        {
+            <ul>
+                <li>
+                    <input name="USERNAME" type="text" class="text" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}"><a href="#" class=" icon user"></a>
+                </li>
+                <li>
+                    <input name="password" type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>
+                </li>
+            </ul>
+            <div class="p-container">
+
+
+                <input type="submit" value="SIGN IN">
+                <div class="clear"></div>
+            </div>
+        }
+    </div>
+    <!--//End-login-form-->
+    <!-----start-copyright---->
+    <div class="copy-right">
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://myShop.com">MyShop</a>
+        </p>
+    </div>
+    <!-----//end-copyright---->
+
+
+</body>
+</html>

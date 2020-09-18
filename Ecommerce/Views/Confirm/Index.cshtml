@@ -1,0 +1,69 @@
+﻿@model Ecommerce.Models.Register.RegisterPro
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Shipping Details</legend>
+        <center>
+         <table style="font-size:medium;" cellpadding="5" cellspacing="10" >
+            <tr>
+                <td>Name 
+                </td>
+                <td>: @Model.fullname
+                </td>
+            </tr>
+            <tr>
+                <td>Address
+                </td>
+                <td>: @Model.address
+                </td>
+            </tr>
+            <tr>
+                <td>Country
+                </td>
+                <td>: @Model.countryId
+                </td>
+            </tr>
+            <tr>
+                <td>State
+                </td>
+                <td>: @Model.statesId
+                </td>
+            </tr>
+            <tr>
+                <td>Pin Code
+                </td>
+                <td>: @Model.pincode
+                </td>
+            </tr>
+            <tr>
+                <td>Email
+                </td>
+                <td>: @Model.email
+                </td>
+            </tr>
+
+            <tr>
+                <td>Phone
+                </td>
+                <td>: @Model.phoneno
+                </td>
+            </tr>
+        </table>
+                   
+            <br /><br />
+            <a href="~/Confirm/PaymentMethod" class="submit" >Confirm Address</a>
+      </center>
+
+    </fieldset>
+}
+
+<br />
+<br />
+<br />
