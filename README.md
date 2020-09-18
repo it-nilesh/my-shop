@@ -1,2 +1,2 @@
 # my-shop
-Collage Project
+e-commerce website | Collage project | .net c#
